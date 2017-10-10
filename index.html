@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ReactStrap</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+    <script type="text/babel" src="js/components/ItemTask.js"></script>
+    <script type="text/babel" src="js/components/AddTaskForm.js"></script>
+    <script type="text/babel" src="js/components/Todo.js"></script>
+    <script type="text/babel" src="js/components/Completed.js"></script>
+    <script type="text/babel" src="js/components/App.js"></script>
+    <script type="text/babel">      
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>
