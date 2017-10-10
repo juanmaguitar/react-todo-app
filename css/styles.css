@@ -11,6 +11,11 @@ body {
   padding-bottom: 20px;
   text-align: center;
 }
+
+.not-done button {
+  margin:10px 0
+}
+
 .form-control {
   border-radius: 0;
 }
@@ -35,6 +40,8 @@ li.ui-state-default:last-child {
 .done-tasks li,
 .pending-tasks li {
   border-bottom: 1px solid #ddd;
+}
+.done-tasks span {
   text-decoration: line-through;
 }
 .done-tasks li:last-child {

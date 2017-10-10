@@ -7,7 +7,7 @@ const Todo = props => {
     <div className="todolist not-done">
       <h1>Todos</h1>
       <AddTaskForm addTask={ props.addTask } />
-      <button id="checkAll" className="btn btn-success">Mark all as done</button>
+      <button onClick={props.markAllAsCompleted} className="btn btn-success">Mark all as done</button>
       <hr/>
       <ul id="sortable" className="pending-tasks list-unstyled">
         { listTasks }
