@@ -1,28 +1,35 @@
 import React from 'react';
 
 import TaskItem from './TaskItem'
+import AddTaskForm from './AddTaskForm'
 
-const demoTask = {
-  id: +new Date(),
-  title: 'Buy Gold',
-  done: false
-}
+const Todo = props => {
+  const todoTasks = props.tasks.filter( task => !task.done )
+  return (
+    <div className="todolist not-done">
+      <h1>Todos</h1>
+      <AddTaskForm
+        addTask={props.addTask}
+      />
+      <button id="checkAll" className="btn btn-success">Mark all as done</button>
+      <hr />
 
-const Todo = () => (
-  <div className="todolist not-done">
-    <h1>Todos</h1>
-    <input type="text" className="form-control add-todo" placeholder="Add todo" />
-    <button id="checkAll" className="btn btn-success">Mark all as done</button>
-    <hr />
-    <ul id="sortable" className="list-unstyled">
-      <TaskItem task={ demoTask } />
-      <TaskItem task={ demoTask } />
-      <TaskItem task={ demoTask } />
-    </ul>
-    <div className="todo-footer">
-      <strong><span className="count-todos" /></strong> Items Left
+      <ul id="sortable" className="list-unstyled">
+        {
+          todoTasks.map( task => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              markAsCompleted={props.markAsCompleted}
+            />
+          ))
+        }
+      </ul>
+      <div className="todo-footer">
+        <strong className="count-todos">{ todoTasks.length }</strong> Items Left
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Todo
