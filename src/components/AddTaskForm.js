@@ -14,6 +14,9 @@ class AddTaskForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.addTask(this.state.value);
+    this.setState({
+      value: ''
+    })
   }
 
   handleChange(e) {

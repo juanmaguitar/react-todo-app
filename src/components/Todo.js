@@ -5,13 +5,18 @@ import AddTaskForm from './AddTaskForm'
 
 const Todo = props => {
   const todoTasks = props.tasks.filter( task => !task.done )
+
+  const handleClick = () => {
+    props.markAllAsCompleted()
+  }
+
   return (
     <div className="todolist not-done">
       <h1>Todos</h1>
       <AddTaskForm
         addTask={props.addTask}
       />
-      <button id="checkAll" className="btn btn-success">Mark all as done</button>
+      <button onClick={ handleClick } id="checkAll" className="btn btn-success">Mark all as done</button>
       <hr />
 
       <ul id="sortable" className="list-unstyled">

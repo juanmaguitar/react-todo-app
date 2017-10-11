@@ -5,10 +5,15 @@ class TaskItem extends Component {
   constructor() {
     super()
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(e) {
     this.props.markAsCompleted(this.props.task.id)
+  }
+
+  handleClick(e) {
+    this.props.removeTask(this.props.task.id)
   }
 
   render() {
@@ -27,7 +32,7 @@ class TaskItem extends Component {
             </label>
             {
               this.props.task.done &&
-              <button className="remove-item btn btn-default btn-xs pull-right"><span className="glyphicon glyphicon-remove" /></button>
+              <button onClick={ this.handleClick } className="remove-item btn btn-default btn-xs pull-right"><span className="glyphicon glyphicon-remove" /></button>
             }
         </div>
       </li>

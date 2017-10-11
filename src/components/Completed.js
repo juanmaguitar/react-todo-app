@@ -10,7 +10,11 @@ const Completed = props => {
       <ul id="done-items" className="list-unstyled">
         {
           completedTasks.map( task => (
-            <TaskItem key={task.id} task={ task } />
+            <TaskItem
+              key={task.id}
+              task={ task }
+              removeTask={ props.removeTask }
+            />
           ))
         }
       </ul>

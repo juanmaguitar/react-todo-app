@@ -8,37 +8,13 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      tasks: [
-        {
-          id: uuid(),
-          title: 'Buy Gold',
-          done: false
-        },
-        {
-          id: uuid(),
-          title: 'Buy Car',
-          done: false
-        },
-        {
-          id: uuid(),
-          title: 'Buy House',
-          done: false
-        },
-        {
-          id: uuid(),
-          title: 'Buy TV',
-          done: true
-        },
-        {
-          id: uuid(),
-          title: 'Buy Something',
-          done: false
-        }
-      ]
+      tasks: []
     }
 
     this.addTask = this.addTask.bind(this)
     this.markAsCompleted = this.markAsCompleted.bind(this)
+    this.removeTask = this.removeTask.bind(this)
+    this.markAllAsCompleted = this.markAllAsCompleted.bind(this)
   }
 
   addTask( titleTask ) {
@@ -62,6 +38,25 @@ class App extends Component {
     })
   }
 
+  markAllAsCompleted( ) {
+    const updatedTasks = this.state.tasks.map( task => {
+      task.done = true
+      return task
+    })
+    this.setState({
+      tasks: updatedTasks
+    })
+  }
+
+  removeTask( idTask ) {
+    const TasksMinusOne = this.state.tasks.filter( task => {
+      return task.id !== idTask
+    })
+    this.setState({
+      tasks: TasksMinusOne
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -71,10 +66,14 @@ class App extends Component {
               addTask={this.addTask}
               markAsCompleted={this.markAsCompleted}
               tasks={this.state.tasks}
+              markAllAsCompleted={this.markAllAsCompleted}
             />
           </div>
           <div className="col-md-6">
-            <Completed tasks={this.state.tasks} />
+            <Completed
+              tasks={this.state.tasks}
+              removeTask={this.removeTask}
+            />
           </div>
         </div>
       </div>
